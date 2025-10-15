@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { getData, getSimplified, getSummary, getFile } from '../controller/summaryController.js';
+import { getData, getSimplified, getSummary, getFile } from '../controller/getDataController.js';
 
 const router = express.Router();
 const storage = multer.memoryStorage();
