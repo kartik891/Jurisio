@@ -1,20 +1,5 @@
 import Home from './pages/home';
 import Simplify from './pages/simplify';
-<<<<<<< HEAD
-
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
-
-function App() {
-
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/simplify" element={<Simplify />} />
-        </Routes>
-      </BrowserRouter>
-=======
 import Summary from './pages/summary';
 import { createContext, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
@@ -44,7 +29,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </SessionIdContext.Provider>
->>>>>>> 574a468b6829ea08bc1280dc904ef7240e344ec0
     </>
   )
 }

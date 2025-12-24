@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { SessionIdContext } from "../App";
 
 function OgDocument() {
@@ -11,18 +13,12 @@ function OgDocument() {
     async function getOriginalData() {
         try {
             if (!sessionId) return;
-
-            const response = await axios.get(`http://localhost:8000/simplified/${sessionId}`);
+            const response = await axios.get(`http://localhost:8000/original/${sessionId}`);
             const originalData = response.data;
-            if(Array.isArray(originalData)){
-                setOriginalData(originalData);
-            }
-            else{
-                setOriginalData([originalData]);
-            }
+            setOriginalData(originalData);
         } catch (err) {
-            console.error("Error fetching summary:", err);
-            setError("Error loading the data");
+            console.error("Error fetching original:", err?.response?.data || err.message);
+            setError(err?.response?.data?.message || "Error loading the data");
         } finally {
             setLoading(false);
         }
@@ -32,6 +28,22 @@ function OgDocument() {
         getOriginalData();
     }, [sessionId]);
 
+    function renderSingleDocument() {
+        return (<ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {originalData}
+        </ReactMarkdown>);
+    }
+
+    function renderArray(){
+        return (originalData.map((page, index) => (
+                        <li key={index}>
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {`### Page ${index + 1}\n\n${page}`}
+                            </ReactMarkdown>
+                        </li>
+        )));
+    }
+
     if (error) return <p>{error}</p>;
     if (loading) return <p>Loading the summary...</p>;
 
@@ -39,9 +51,7 @@ function OgDocument() {
         <div>
             <h3>Original Document</h3>
             <ul>
-                {originalData.map((page, index) => (
-                    <li key={index}><pre>{`Page ${index+1}\n`}{page}</pre></li>
-                ))}
+                {Array.isArray(originalData) ? renderArray() : renderSingleDocument()}
             </ul>
         </div>
     );

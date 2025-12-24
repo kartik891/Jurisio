@@ -1,15 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <title>Summarizer Demo</title>
 </head>
 <body>
-    <form action="http:localhost:7000/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="pdf-file">
-        <button type="submit">Submit</button>
-    </form>
-    <script src="extracting.js"></script>
+  <textarea id="input" rows="10" cols="60">Paste the long text here …</textarea>
+  <button id="btn">Summarize</button>
+  <div id="output"></div>
+
+  <script type="module">
+    const btn = document.getElementById('btn');
+    const inputEl = document.getElementById('input');
+    const outputEl = document.getElementById('output');
+
+    btn.addEventListener('click', async () => {
+      if (!('Summarizer' in window)) {
+        outputEl.textContent = "Summarizer API not supported";
+        return;
+      }
+
+      const options = {
+        type: "key-points",
+        length: "short",
+        format: "plain-text",
+        language: 'en'
+      };
+      const avail = await Summarizer.availability(options);
+      if (avail === "unavailable") {
+        outputEl.textContent = "This summarizer configuration is unavailable";
+        return;
+      }
+
+      const summarizer = await Summarizer.create(options);
+      try {
+        const summary = await summarizer.summarize(inputEl.value);
+        outputEl.textContent = summary;
+      } catch (err) {
+        console.error("Summarizing failed:", err);
+        outputEl.textContent = "Error during summarization";
+      } finally {
+        summarizer.destroy();
+      }
+    });
+  </script>
 </body>
 </html>

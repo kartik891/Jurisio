@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-function Simplify(){
-
-    return (<>
-            <h2>This is Simplification Page</h2>
-=======
 import Redirect from "../component/redirect_button";
 import OgDocument from "../component/original_document";
 import SimplifiedDocument from "../component/simplified_document";
@@ -22,7 +16,6 @@ function Simplify(){
             <br></br>
             <SimplifiedDocument/>
             <Footer/>
->>>>>>> 574a468b6829ea08bc1280dc904ef7240e344ec0
             </>);
 }
 
