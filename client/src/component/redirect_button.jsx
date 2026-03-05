@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import './ui/redirect.css';
 
-function Redirect({path = '/', symbol = '<- Back'}){
+function Redirect({path = '/', symbol = '<- Back', text = 'Back'}){
 
     const navigate = useNavigate();
 
@@ -9,7 +10,7 @@ function Redirect({path = '/', symbol = '<- Back'}){
     }
 
     return (<>
-                <button onClick={revertBack}>{symbol}</button>
+                <button onClick={revertBack} id="universal-button">{text}&nbsp;{symbol}</button>
             </>);
 }
 

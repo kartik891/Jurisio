@@ -1,0 +1,24 @@
+#universal-button {
+    display: flex;
+    padding: .5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(0, 0%, 15%);
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: .5rem;
+    color: hsl(0, 0%, 90%);
+}
+#universal-button:hover {
+  background-color: hsl(0, 0%, 17%);
+  transform: translateY(-1px);
+}
+#universal-button:active {
+  transform: translateY(1px);
+}
+#universal-button:focus {
+  outline: 2px solid hsl(0, 0%, 90%);
+  outline-offset: 2px;
+}

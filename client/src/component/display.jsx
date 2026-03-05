@@ -1,8 +1,10 @@
+import './ui/display.css';
+
 function Display(){
     
     return (<>
-            <h1>Jurisio</h1>
-            <p>Turning legal jargon into plain language</p>
+            <h1 id='heading'>Jurisio</h1>
+            <p id='about-page'>Turning legal jargon into plain language</p>
             </>);
 }
 

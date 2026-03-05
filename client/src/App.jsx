@@ -1,6 +1,5 @@
 import Home from './pages/home';
 import Simplify from './pages/simplify';
-import Summary from './pages/summary';
 import { createContext, useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
@@ -25,7 +24,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/simplify" element={<Simplify />} />
-            <Route path='/summary' element={<Summary />} />
           </Routes>
         </BrowserRouter>
       </SessionIdContext.Provider>

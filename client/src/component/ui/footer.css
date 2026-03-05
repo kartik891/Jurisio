@@ -1,0 +1,12 @@
+
+#footer{
+    margin-top: 5rem;
+    text-align: left;
+    width: 100%;
+    background-color: hsl(0, 0%, 10%);
+    border-top: hsl(0, 0%, 15%) solid 1px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: hsl(0, 0%, 50%);
+}

@@ -1,0 +1,171 @@
+/* Layout and controls for the Simplify page */
+#simplify-compare {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+#simplify-compare > div {
+    width: 45%;
+}
+
+#simplify-compare .document-content {
+    border: hsl(0, 0%, 15%) solid 2px;
+    border-radius: .5rem;
+    padding: 1rem;
+    background-color: hsl(0, 0%, 10%);
+    color: hsl(0, 0%, 90%);
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#simplify-compare .document-content p {
+    margin-bottom: 1rem;
+}
+
+#simplified-doc{
+    background-color: hsl(0, 0%, 10%);
+    padding: 1rem;
+    border: hsl(0, 0%, 15%) solid 2px;
+    border-radius: .5rem;
+    color: hsl(0, 0%, 80%);
+}
+
+#og-doc{
+    background-color: hsl(0, 0%, 10%);
+    padding: 1rem;
+    border: hsl(0, 0%, 15%) solid 2px;
+    border-radius: .5rem;
+    color: hsl(0, 0%, 80%);
+}
+
+#simplified-heading{
+    text-align: left;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: hsl(0, 0%, 90%);
+}
+#original-heading{
+    text-align: left;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: hsl(0, 0%, 90%);
+}
+
+#copy-button, #download-button{
+    display: inline-flex;
+    padding: .5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    margin: .5rem;
+    background-color: hsl(0, 0%, 15%);
+    border: none;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: .65rem;
+    color: hsl(0, 0%, 90%);
+}
+
+#copy-button:hover, #download-button:hover {
+  background-color: hsl(0, 0%, 17%); 
+  transform: translateY(-1px);
+}
+#copy-button:active, #download-button:active {
+  transform: translateY(1px);
+}
+#copy-button:focus, #download-button:focus {
+  outline: 2px solid hsl(0, 0%, 90%);
+  outline-offset: 2px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(0, 0%, 30%);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+#button-layer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: .5rem;
+}
+
+#button-layer #back-button{
+    margin-right: auto;
+}
+
+#button-layer #summary-button{
+    margin-left: auto;
+}
+
+/* Reusable button styles to match site theme */
+.btn-primary {
+  display: inline-flex;
+  padding: .5rem 1rem;
+  align-items: center;
+  justify-content: center;
+  margin: .25rem;
+  background-color: hsl(0, 0%, 15%);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.12s ease;
+  border-radius: .65rem;
+  color: hsl(0, 0%, 90%);
+}
+.btn-primary:hover { background-color: hsl(0,0%,17%); transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: hsl(0,0%,90%);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: .45rem .9rem;
+  border-radius: .6rem;
+  cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.02); }

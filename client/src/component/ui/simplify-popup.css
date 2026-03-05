@@ -1,0 +1,82 @@
+/* Popup and modal styles */
+.simplify-popup button {
+  /* use site-themed primary button */
+  display: inline-flex;
+  padding: .4rem .9rem;
+  background: hsl(0,0%,15%);
+  color: hsl(0,0%,90%);
+  border: none;
+  border-radius: .5rem;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.12s ease;
+}
+.simplify-popup button:hover { background: hsl(0,0%,17%); transform: translateY(-1px); }
+
+.simplify-modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+}
+.simplify-modal {
+  background: hsl(0, 0%, 90%);
+  padding: 20px 30px;
+  border-radius: .5rem;
+  width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.simplify-modal h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+.simplify-modal button {
+  background: hsl(0,0%,15%);
+  color: hsl(0,0%,90%);
+  border: none;
+  padding: 8px 14px;
+  border-radius: .5rem;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.simplify-modal button:hover {
+  background: hsl(0,0%,17%);
+}
+
+.simplify-explain-popup {
+  background: hsl(0, 0%, 15%); /* match site dark surface */
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: .5rem;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  z-index: 1000;
+  max-width: 360px;
+  width: min(90vw, 360px);
+  color: hsl(0, 0%, 85%);
+}
+
+.simplify-explain-popup .content {
+  max-height: 240px;
+  overflow-y: auto;
+  color: hsl(0, 0%, 70%);
+}
+
+.simplify-explain-popup h3 { margin: 0 0 8px 0; color: hsl(0, 0%, 70%); }
+.simplify-explain-popup p { color:hsl(0, 0%, 70%); }
+
+/* explain popup actions (close/copy) — ghost buttons matching theme */
+.simplify-explain-popup button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: hsl(0, 0%, 85%);
+  padding: 6px 10px;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+.simplify-explain-popup button:hover { background: rgba(255,255,255,0.02); }

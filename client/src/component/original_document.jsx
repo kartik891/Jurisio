@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SessionIdContext } from "../App";
+import './ui/simplify.css';
+import { simplifyContent } from "./upload";
 
 function OgDocument() {
     const [originalData, setOriginalData] = useState(null);
@@ -10,12 +11,12 @@ function OgDocument() {
     const [error, setError] = useState(null);
     const sessionId = useContext(SessionIdContext);
 
+
     async function getOriginalData() {
         try {
             if (!sessionId) return;
-            const response = await axios.get(`http://localhost:8000/original/${sessionId}`);
-            const originalData = response.data;
-            setOriginalData(originalData);
+            const originalText = simplifyContent[sessionId].extractedText;
+            setOriginalData(originalText);
         } catch (err) {
             console.error("Error fetching original:", err?.response?.data || err.message);
             setError(err?.response?.data?.message || "Error loading the data");
@@ -45,11 +46,11 @@ function OgDocument() {
     }
 
     if (error) return <p>{error}</p>;
-    if (loading) return <p>Loading the summary...</p>;
+    if (loading) return <p>Loading the original document...</p>;
 
     return (
-        <div>
-            <h3>Original Document</h3>
+        <div id="og-doc">
+            <h3 id="original-heading">Original Document</h3>
             <ul>
                 {Array.isArray(originalData) ? renderArray() : renderSingleDocument()}
             </ul>
